@@ -23,9 +23,6 @@
     </Page.DataContext>
 
     <Grid>
-        <!--
-                              cm:Message.Attach="[Event ItemInvoked] = [Action ItemSelected($eventArgs)];"
-        -->
         <winui:NavigationView x:Name="NavigationView"
                               Header="{x:Bind ViewModel.Header, Mode=OneWay}"
                               IsBackButtonVisible="Collapsed"
@@ -40,29 +37,21 @@
             </i:Interaction.Behaviors>
             
             <winui:NavigationView.MenuItems>
-                <!-- Home button -->
+                
                 <winui:NavigationViewItem Icon="Home" Content="Home" IsEnabled="{x:Bind ViewModel.NotInSetup, Mode=OneWay}" />
 
-                <!-- About button -->
-                <winui:NavigationViewItem Icon="List" Content="About" IsEnabled="{x:Bind ViewModel.NotInSetup, Mode=OneWay}" />
+                <winui:NavigationViewItem Icon="Important" Content="About" IsEnabled="{x:Bind ViewModel.NotInSetup, Mode=OneWay}" />
                 
             </winui:NavigationView.MenuItems>
 
-            <!-- Note: PassArguments="false" causes sender to be passed to ViewModel -->
-            <Frame x:Name="ContentFrame" x:FieldModifier="Public"
-                   Padding="16 0"
-                    >
+            <!-- Note: PassArguments="false" causes sender to be passed to ViewModel (very handy) -->
+            <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="16 0" >
                 <i:Interaction.Behaviors>
                     <ui:EventToCommandBehavior 
                             Event="Loaded"
                             Command="{x:Bind ViewModel.FrameLoadedCommand}" 
                             PassArguments="false"/>
                 </i:Interaction.Behaviors>
-                <!--
-                   What alternative is there to the above Caliburn.Micro approach for initializing
-                   Navigation services on load while keeping all this logic inside our ShellViewModel?
-                   cm:Message.Attach="[Event Loaded] = [SetupNavigationService($source)]"
-                -->
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>
