@@ -1,13 +1,20 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using SimpleMVVM.Messages;
+using SimpleMVVM.Services;
 
 namespace SimpleMVVM.ViewModels
 {
+    [RegisterVMAttribute(InstanceMode.Transient)]
     public class HomeViewModel : ViewModelBase
     {
+        public static HomeViewModel Instance => Ioc.Default.GetService<HomeViewModel>();
+
+        private readonly IMessenger _messenger;
+
         private string _message;
         public string Message
         {
@@ -17,8 +24,10 @@ namespace SimpleMVVM.ViewModels
 
         public IAsyncRelayCommand GetBusyAsyncCommand { get; }
 
-        public HomeViewModel()
+        public HomeViewModel(IMessenger messenger)
         {
+            _messenger = messenger;
+
             GetBusyAsyncCommand = new AsyncRelayCommand(GetBusyAsync);
 
             Message = "Hello home.";
@@ -26,9 +35,9 @@ namespace SimpleMVVM.ViewModels
 
         private async Task GetBusyAsync()
         {
-            await Messenger.Send(new ShellStateMessage(ShellState.BusyOn));
+            await _messenger.Send(new ShellStateMessage(ShellState.BusyOn));
             await Task.Delay(3000);
-            await Messenger.Send(new ShellStateMessage(ShellState.BusyOff));
+            await _messenger.Send(new ShellStateMessage(ShellState.BusyOff));
         }
     }
 }

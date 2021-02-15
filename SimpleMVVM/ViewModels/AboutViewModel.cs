@@ -1,7 +1,9 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using SimpleMVVM.Services;
 
 namespace SimpleMVVM.ViewModels
 {
+    [RegisterVMAttribute(InstanceMode.Transient)]
     public class AboutViewModel : ObservableRecipient
     {
         private string _message;

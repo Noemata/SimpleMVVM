@@ -13,6 +13,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace SimpleMVVM.ViewModels
 {
+    [RegisterVMAttribute(InstanceMode.Transient)]
     public class ShellViewModel : ObservableRecipient
     {
         private string _header = "Simple Microsoft MVVM Toolkit Sample";

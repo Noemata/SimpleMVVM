@@ -1,6 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
-
+using Microsoft.Toolkit.Mvvm.Messaging;
 using SimpleMVVM.Logging;
 
 namespace SimpleMVVM.ViewModels

@@ -13,6 +13,9 @@ using SimpleMVVM.Views;
 using SimpleMVVM.Helpers;
 using SimpleMVVM.Logging;
 using SimpleMVVM.Dialogs;
+using System.Reflection;
+using System.Linq;
+using SimpleMVVM.Services;
 
 namespace SimpleMVVM
 {
@@ -41,14 +44,16 @@ namespace SimpleMVVM
             // Ensure the UI is initialized
             if (Window.Current.Content is null)
             {
-                // Register services
-                Ioc.Default.ConfigureServices
-                        (new ServiceCollection()
-                            .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
-                            .AddSingleton<ILoggingService, DebugLoggingService>()
-                            .AddSingleton<DialogView>()
-                            .BuildServiceProvider()
-                        );
+                // Configure services.
+                ServiceCollection services = new ServiceCollection();
+                services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
+                services.AddSingleton<ILoggingService, DebugLoggingService>();
+                services.AddSingleton<DialogView>();
+
+                RegistVMInstances(services);
+
+                // Register services.
+                Ioc.Default.ConfigureServices(services.BuildServiceProvider());
 
                 Window.Current.Content = new ShellView();
 
@@ -62,6 +67,26 @@ namespace SimpleMVVM
                 CoreApplication.EnablePrelaunch(true);
 
                 Window.Current.Activate();
+            }
+        }
+
+        void RegistVMInstances(ServiceCollection services)
+        {
+            var types = this.GetType().GetTypeInfo().Assembly.DefinedTypes
+                .Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterVMAttributeAttribute>()?.Mode })
+                .Where(o => o.Mode != null && o.Mode != InstanceMode.None);
+
+            foreach (var t in types)
+            {
+                var type = t.T.AsType();
+                if (t.Mode == InstanceMode.Singleton)
+                {
+                    services.AddSingleton(type);
+                }
+                else if (t.Mode == InstanceMode.Transient)
+                {
+                    services.AddTransient(type);
+                }
             }
         }
 

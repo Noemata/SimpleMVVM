@@ -128,6 +128,7 @@
     <Compile Include="Messages\ShellStateMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\RegisterVMAttribute.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
