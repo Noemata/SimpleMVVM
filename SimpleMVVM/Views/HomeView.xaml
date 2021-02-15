@@ -13,7 +13,7 @@
     </Page.DataContext>
 
     <Grid Background="#FF222222">
-        <TextBlock Text="&#xe10f;" FontFamily="Segoe MDL2 Assets" Margin="0,40,0,0" FontSize="300" Foreground="White" HorizontalAlignment="Center" />
+        <TextBlock Text="&#xe10f;" FontFamily="Segoe MDL2 Assets" Margin="0,40,0,0" FontSize="300" Foreground="White" HorizontalAlignment="Center"  />
         <TextBlock Text="{x:Bind ViewModel.Message, Mode=OneTime}" Margin="20" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
         <Button Content="Get Busy"
                 Margin="0,0,0,80"

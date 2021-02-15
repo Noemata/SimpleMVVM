@@ -76,11 +76,11 @@ namespace SimpleMVVM.ViewModels
                     switch (option)
                     {
                         case "Home":
-                            Header = "Home";
+                            Header = option;
                             NavigationService.Navigate(typeof(HomeView), null);
                             break;
                         case "About":
-                            Header = "About";
+                            Header = option;
                             NavigationService.Navigate(typeof(AboutView), null);
                             break;
                         default:

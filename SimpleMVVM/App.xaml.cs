@@ -13,7 +13,6 @@ using SimpleMVVM.Views;
 using SimpleMVVM.Helpers;
 using SimpleMVVM.Logging;
 using SimpleMVVM.Dialogs;
-using SimpleMVVM.Services;
 
 namespace SimpleMVVM
 {
@@ -53,11 +52,8 @@ namespace SimpleMVVM
 
                 Window.Current.Content = new ShellView();
 
-                //NavigationService.Frame = ((ShellView)Window.Current.Content).ContentFrame;
-
                 TitleBarHelper.StyleTitleBar();
                 TitleBarHelper.ExpandViewIntoTitleBar();
-
             }
 
             // Enable the prelaunch if needed, and activate the window

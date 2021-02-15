@@ -74,6 +74,7 @@
         -->
         <Grid VerticalAlignment="Bottom">
             <ToggleButton CornerRadius="0"
+                          ToolTipService.ToolTip="Settings"
                           Width="40"
                           Click="{x:Bind ViewModel.OnSettings, Mode=OneWay}"
                           IsChecked="{x:Bind ViewModel.IsSetting, Mode=TwoWay}">

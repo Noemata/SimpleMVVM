@@ -11,4 +11,4 @@ This project incorporates features that compensate for some of the limitations o
 
 Notes:
 
-Some cleanup still left to do.
+More will be fleshed out over time.
