@@ -9,14 +9,12 @@ using SimpleMVVM.Views;
 using SimpleMVVM.Services;
 using SimpleMVVM.Dialogs;
 using SimpleMVVM.Messages;
-using SimpleMVVM.Behaviors;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace SimpleMVVM.ViewModels
 {
     public class ShellViewModel : ObservableRecipient
     {
-        private readonly ILogger _logger = null;
-
         private string _header = "Simple Microsoft MVVM Toolkit Sample";
         public string Header
         {
@@ -41,19 +39,13 @@ namespace SimpleMVVM.ViewModels
             }
         }
 
-        // Used for logging telementry only.
-        private const string ItemInvokedEvent = "ShellViewModel.NavigationView.ItemInvoked";
-        private const string FrameLoadedEvent = "ShellViewModel.ContentFrame.Loaded";
-
-        internal ActionCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
-        internal ActionCommand<object> FrameLoadedCommand { get; }
+        public IRelayCommand<Frame> FrameLoadedCommand { get; }
+        public IRelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
 
         public ShellViewModel()
         {
-            _logger = Ioc.Default.GetService<ILogger>();
-
-            ItemInvokedCommand = new ActionCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(_logger, ItemInvokedEvent, ExecuteItemInvokedCommand);
-            FrameLoadedCommand = new ActionCommand<object>(_logger, FrameLoadedEvent, ExecuteFrameLoadedCommand);
+            FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
+            ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
 
             Messenger.Register<ShellStateMessage>(this, (r, m) =>
             {
@@ -65,6 +57,12 @@ namespace SimpleMVVM.ViewModels
 
                 m.Reply(m.State);
             });
+        }
+
+        private void SetupNavigationService(Frame frame)
+        {
+            if (frame != null)
+                NavigationService.Frame = frame;
         }
 
         private void ExecuteItemInvokedCommand(MSWinUI.NavigationViewItemInvokedEventArgs args)
@@ -90,17 +88,6 @@ namespace SimpleMVVM.ViewModels
                     }
                 }
             }
-        }
-
-        private void ExecuteFrameLoadedCommand(object sender)
-        {
-            SetupNavigationService((Frame)sender);
-        }
-
-        public void SetupNavigationService(Frame frame)
-        {
-            if (frame != null)
-                NavigationService.Frame = frame;
         }
 
         public async void OnSettings()

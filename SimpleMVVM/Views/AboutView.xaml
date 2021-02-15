@@ -12,7 +12,8 @@
         <viewModels:AboutViewModel x:Name="ViewModel" />
     </Page.DataContext>
 
-    <Grid>
-        <TextBlock Text="{x:Bind ViewModel.Message, Mode=OneTime}" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    <Grid Background="#FF222222">
+        <TextBlock Text="&#xe783;" FontFamily="Segoe MDL2 Assets" Margin="0,40,0,0" FontSize="300" Foreground="White" HorizontalAlignment="Center" />
+        <TextBlock Text="{x:Bind ViewModel.Message, Mode=OneTime}" Margin="20" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
     </Grid>
 </Page>

@@ -13,7 +13,7 @@ namespace SimpleMVVM.ViewModels
 
         public SettingsViewModel()
         {
-            Message = "Settings.";
+            Message = "Hello settings.";
         }
     }
 }

@@ -35,22 +35,25 @@
                             Command="{x:Bind ViewModel.ItemInvokedCommand}" 
                             PassArguments="true"/>
             </i:Interaction.Behaviors>
-            
+
             <winui:NavigationView.MenuItems>
 
                 <winui:NavigationViewItem Icon="Home" Content="Home" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
 
-                <winui:NavigationViewItem Icon="Important" Content="About" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
-                
+                <winui:NavigationViewItem Content="About" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" >
+                    <winui:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE783;" />
+                    </winui:NavigationViewItem.Icon>
+                </winui:NavigationViewItem>
+
             </winui:NavigationView.MenuItems>
 
             <!-- Note: PassArguments="false" causes sender to be passed to ViewModel (very handy) -->
-            <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="16 0" >
+            <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="14 14" >
                 <i:Interaction.Behaviors>
-                    <ui:EventToCommandBehavior 
-                            Event="Loaded"
-                            Command="{x:Bind ViewModel.FrameLoadedCommand}" 
-                            PassArguments="false"/>
+                    <ic:EventTriggerBehavior EventName="Loaded">
+                        <ic:InvokeCommandAction Command="{x:Bind ViewModel.FrameLoadedCommand}" CommandParameter="{Binding ElementName=ContentFrame}"/>
+                    </ic:EventTriggerBehavior>
                 </i:Interaction.Behaviors>
                 <Frame.ContentTransitions>
                     <TransitionCollection>
@@ -78,7 +81,7 @@
             </ToggleButton>
         </Grid>
         <Grid Background="DarkGray" Opacity="0.5" Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}">
-            <ProgressRing Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Width="200" Height="200" />
+            <ProgressRing Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Margin="40,0,0,0" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Width="200" Height="200" />
         </Grid>
     </Grid>
 </Page>

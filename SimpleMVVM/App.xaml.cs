@@ -14,7 +14,6 @@ using SimpleMVVM.Helpers;
 using SimpleMVVM.Logging;
 using SimpleMVVM.Dialogs;
 using SimpleMVVM.Services;
-using SimpleMVVM.Core;
 
 namespace SimpleMVVM
 {
@@ -48,7 +47,6 @@ namespace SimpleMVVM
                         (new ServiceCollection()
                             .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                             .AddSingleton<ILoggingService, DebugLoggingService>()
-                            .AddSingleton<ILogger, Logger>()
                             .AddSingleton<DialogView>()
                             .BuildServiceProvider()
                         );

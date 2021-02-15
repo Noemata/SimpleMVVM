@@ -119,22 +119,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Behaviors\ActionCommand.cs" />
-    <Compile Include="Behaviors\AsyncActionCommand.cs" />
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Core\Arguments.cs" />
-    <Compile Include="Core\DisposableSempahore.cs" />
-    <Compile Include="Core\Logger.cs" />
-    <Compile Include="Core\TaskCompletionNotifier.cs" />
-    <Compile Include="Core\TaskHelper.cs" />
     <Compile Include="Dialogs\DialogView.cs" />
     <Compile Include="Helpers\TitleBarHelper.cs" />
     <Compile Include="Logging\DebugLoggingService.cs" />
     <Compile Include="Logging\ILoggingService.cs" />
     <Compile Include="Messages\ShellStateMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ILogger.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
