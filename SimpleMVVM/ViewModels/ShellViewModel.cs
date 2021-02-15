@@ -31,13 +31,6 @@ namespace SimpleMVVM.ViewModels
             set => SetProperty(ref _isBusy, value);
         }
 
-        bool _notInSetup = true;
-        public bool NotInSetup
-        {
-            get => _notInSetup;
-            set => SetProperty(ref _notInSetup, value);
-        }
-
         private bool _isSetting = false;
         public bool IsSetting
         {
@@ -45,7 +38,6 @@ namespace SimpleMVVM.ViewModels
             set
             {
                 SetProperty(ref _isSetting, value);
-                NotInSetup = !_isSetting;
             }
         }
 

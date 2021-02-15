@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -13,5 +14,8 @@ namespace SimpleMVVM.Views
         {
             this.InitializeComponent();
         }
+
+        private bool bNot(bool value) => value ? false : true;
+        private Visibility vNot(bool value) => value ? Visibility.Collapsed : Visibility.Visible;
     }
 }

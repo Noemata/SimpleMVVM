@@ -37,10 +37,10 @@
             </i:Interaction.Behaviors>
             
             <winui:NavigationView.MenuItems>
-                
-                <winui:NavigationViewItem Icon="Home" Content="Home" IsEnabled="{x:Bind ViewModel.NotInSetup, Mode=OneWay}" />
 
-                <winui:NavigationViewItem Icon="Important" Content="About" IsEnabled="{x:Bind ViewModel.NotInSetup, Mode=OneWay}" />
+                <winui:NavigationViewItem Icon="Home" Content="Home" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
+
+                <winui:NavigationViewItem Icon="Important" Content="About" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
                 
             </winui:NavigationView.MenuItems>
 
@@ -77,8 +77,8 @@
                 <FontIcon Glyph="&#xE115;"/>
             </ToggleButton>
         </Grid>
-        <Grid Background="DarkGray" Opacity="0.5" Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-            <ProgressRing Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Width="200" Height="200" />
+        <Grid Background="DarkGray" Opacity="0.5" Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}">
+            <ProgressRing Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Width="200" Height="200" />
         </Grid>
     </Grid>
 </Page>
