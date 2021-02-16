@@ -12,7 +12,7 @@ This project incorporates features that compensate for some of the limitations o
 ## Screenshot
 ![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/ScreenShot.png)
 
-Notes:
+## Notes
 
 What limitations?
 
@@ -25,7 +25,9 @@ A simple solution to this little detail is to use an attribute as shown below:
     public class AboutViewModel : ObservableRecipient
 ```
 
-Have a look at App.xaml.cs to see the details of how this is done.
+This can be automatically incorporated via a project template whenever you generate a ViewModel class.
+
+Have a look at App.xaml.cs to see the details of how this approach works.
 
 Another missing capability from MVVM frameworks in general is the ability to send control events to your ViewModel.  For the ShellViewModel in particular, there is no need to adhere to a strict MVVM approach.
 
@@ -49,7 +51,7 @@ Having EventToCommandBehavior allows you to work around issues such as the one s
 
 ```
 
-Where we need to handle navigation events within the ShellViewModel to coordinate with other executive level control operations.
+Navigation events and other like control events can be dispatched within the ShellViewModel to coordinate with other executive level control operations.  Think of your ShellViewModel as your UI escape hatch where anything goes allowing the rest of your MVVM design to stay clean and sober.
 
-Please let me know if you see ways to improve this sample.
+Please let me know if you see ways to improve this sample or if you have a difference of opinion in the approach taken.
 
