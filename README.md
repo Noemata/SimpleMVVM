@@ -10,7 +10,7 @@ This project incorporates features that compensate for some of the limitations o
 * MVVM and Toolkit ideas: https://github.com/windows-toolkit/MVVM-Samples , https://github.com/XamlBrewer/UWP-MVVM-Toolkit-Sample , https://github.com/veler/PaZword
 
 ## Screenshot
-![Screenshot](https://github.com/Noemata/SimpleMVVM/raw/master/Screenshot.png)
+![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/ScreenShot.png)
 
 Notes:
 
