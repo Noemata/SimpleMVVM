@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using SimpleMVVM.Messages;
 using SimpleMVVM.Services;
 
@@ -12,8 +11,6 @@ namespace SimpleMVVM.ViewModels
     [RegisterVMAttribute(InstanceMode.Transient)]
     public class HomeViewModel : ObservableRecipient
     {
-        public static HomeViewModel Instance => Ioc.Default.GetService<HomeViewModel>();
-
         private readonly IMessenger _messenger;
 
         private string _message;

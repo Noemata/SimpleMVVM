@@ -1,4 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+
+using SimpleMVVM.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -11,7 +14,9 @@ namespace SimpleMVVM.Views
     {
         public SettingsView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
+
+        internal SettingsViewModel ViewModel => Ioc.Default.GetService<SettingsViewModel>();
     }
 }

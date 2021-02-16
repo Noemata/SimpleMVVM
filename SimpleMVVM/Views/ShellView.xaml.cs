@@ -1,5 +1,4 @@
-﻿using SimpleMVVM.ViewModels;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -13,7 +12,7 @@ namespace SimpleMVVM.Views
     {
         public ShellView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private bool bNot(bool value) => value ? false : true;

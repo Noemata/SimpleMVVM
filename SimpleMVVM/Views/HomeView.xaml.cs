@@ -1,5 +1,7 @@
-﻿using SimpleMVVM.ViewModels;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+
+using SimpleMVVM.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -12,9 +14,9 @@ namespace SimpleMVVM.Views
     {
         public HomeView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        internal HomeViewModel ViewModel => HomeViewModel.Instance;
+        internal HomeViewModel ViewModel = Ioc.Default.GetService<HomeViewModel>();
     }
 }

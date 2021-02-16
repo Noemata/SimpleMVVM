@@ -8,12 +8,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <viewModels:SettingsViewModel x:Name="ViewModel" />
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid Background="#FF222222">
         <TextBlock Text="&#xe115;" FontFamily="Segoe MDL2 Assets" Margin="0,40,0,0" FontSize="300" Foreground="White" HorizontalAlignment="Center" />
         <TextBlock Text="{x:Bind ViewModel.Message, Mode=OneTime}" Margin="20" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                    <TextBlock Text="Options" Foreground="Orange" FontSize="22" Margin="0,2,0,8" />
+                    <ToggleSwitch x:Name="ShowVersion" IsOn="{x:Bind ViewModel.ShowVersion, Mode=TwoWay}" Header="Show version information" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
