@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.ApplicationModel;
 using Windows.UI.Xaml.Navigation;
@@ -11,9 +13,6 @@ using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 using SimpleMVVM.Views;
 using SimpleMVVM.Helpers;
-using SimpleMVVM.Dialogs;
-using System.Reflection;
-using System.Linq;
 using SimpleMVVM.Services;
 using SimpleMVVM.Uwp.Services;
 
@@ -78,7 +77,7 @@ namespace SimpleMVVM
             services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             services.AddSingleton<ILoggingService, DebugLogger>();
-            services.AddSingleton<DialogView>();
+            services.AddSingleton<IUserNotificationService, UserNotificationService>();
 
             RegistVMInstances(services);
 

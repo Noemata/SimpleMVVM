@@ -7,7 +7,6 @@ using MSWinUI = Microsoft.UI.Xaml.Controls;
 
 using SimpleMVVM.Views;
 using SimpleMVVM.Services;
-using SimpleMVVM.Dialogs;
 using SimpleMVVM.Messages;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -16,6 +15,9 @@ namespace SimpleMVVM.ViewModels
     [RegisterVMAttribute(InstanceMode.Transient)]
     public class ShellViewModel : ObservableRecipient
     {
+        private readonly IUserNotificationService _userNotificationService;
+        private readonly IMessenger _messenger;
+
         private string _header = "Simple Microsoft MVVM Toolkit Sample";
         public string Header
         {
@@ -45,10 +47,13 @@ namespace SimpleMVVM.ViewModels
 
         public ShellViewModel()
         {
+            _messenger = Ioc.Default.GetService<IMessenger>();
+            _userNotificationService = Ioc.Default.GetService<IUserNotificationService>();
+
             FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
             ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
 
-            Messenger.Register<ShellStateMessage>(this, (r, m) =>
+            _messenger.Register<ShellStateMessage>(this, (r, m) =>
             {
                 if (m.State == ShellState.BusyOn)
                     IsBusy = true;
@@ -97,8 +102,7 @@ namespace SimpleMVVM.ViewModels
             {
                 if (NavigationService.Frame.CurrentSourcePageType == null)
                 {
-                    var dialogService = Ioc.Default.GetService<DialogView>();
-                    await dialogService.MessageDialogAsync("Notice:", "Navigate to a page before selecting settings.");
+                    await _userNotificationService.MessageDialogAsync("Notice:", "Navigate to a page before selecting settings.");
                     IsSetting = false;
                     return;
                 }

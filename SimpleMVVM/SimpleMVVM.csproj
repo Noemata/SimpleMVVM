@@ -121,7 +121,6 @@
     </Compile>
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Dialogs\DialogView.cs" />
     <Compile Include="Helpers\GlobalVariables.cs" />
     <Compile Include="Helpers\TitleBarHelper.cs" />
     <Compile Include="Messages\ShellStateMessage.cs" />
