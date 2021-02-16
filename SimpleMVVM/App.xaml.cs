@@ -15,6 +15,7 @@ using SimpleMVVM.Views;
 using SimpleMVVM.Helpers;
 using SimpleMVVM.Services;
 using SimpleMVVM.Uwp.Services;
+using SimpleMVVM.ViewModels;
 
 namespace SimpleMVVM
 {
@@ -29,6 +30,11 @@ namespace SimpleMVVM
         public static string AppVersion;
 
         /// <summary>
+        /// Application version infromation.
+        /// </summary>
+        static string AppAssemblyFullName;
+
+        /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
@@ -39,6 +45,9 @@ namespace SimpleMVVM
 
             var assembly = (typeof(App)).GetTypeInfo().Assembly;
             AppVersion = assembly.GetName().Version.ToString();
+            AppAssemblyFullName = assembly.FullName;
+            // MP! resolve: better way to foce assembl load.
+            typeof(SimpleMVVM_ViewModels_ForceLoad).Assembly.GetName();
         }
 
         /// <summary>
@@ -86,7 +95,6 @@ namespace SimpleMVVM
 
         private void InitializeSettings()
         {
-            
             ISettingsService settings = Ioc.Default.GetService<ISettingsService>();
 
             // Initialize default settings
@@ -95,20 +103,21 @@ namespace SimpleMVVM
 
         void RegistVMInstances(ServiceCollection services)
         {
-            var types = this.GetType().GetTypeInfo().Assembly.DefinedTypes
-                .Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterVMAttributeAttribute>()?.Mode })
+            foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                if (a.FullName != AppAssemblyFullName && !a.FullName.Contains("ViewModels"))
+                    continue;
+
+                var types = a.GetTypes().Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterVMAttributeAttribute>()?.Mode })
                 .Where(o => o.Mode != null && o.Mode != InstanceMode.None);
 
-            foreach (var t in types)
-            {
-                var type = t.T.AsType();
-                if (t.Mode == InstanceMode.Singleton)
+                foreach (var t in types)
                 {
-                    services.AddSingleton(type);
-                }
-                else if (t.Mode == InstanceMode.Transient)
-                {
-                    services.AddTransient(type);
+                    var type = t.T;
+                    if (t.Mode == InstanceMode.Singleton)
+                        services.AddSingleton(type);
+                    else if (t.Mode == InstanceMode.Transient)
+                        services.AddTransient(type);
                 }
             }
         }

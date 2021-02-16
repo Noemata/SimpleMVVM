@@ -11,11 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{BEC6D2
 		ScreenShot.png = ScreenShot.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.Services", "SimpleMVVM.Services\SimpleMVVM.Services.csproj", "{A0194240-A434-45CD-BC8D-45FAD08AF682}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.Services", "SimpleMVVM.Services\SimpleMVVM.Services.csproj", "{A0194240-A434-45CD-BC8D-45FAD08AF682}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.Uwp.Services", "SimpleMVVM.Uwp.Services\SimpleMVVM.Uwp.Services.csproj", "{42CB81F0-0724-439E-997D-70B3E86C7B05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.Models", "SimpleMVVM.Models\SimpleMVVM.Models.csproj", "{6C55CDB7-16D2-4E73-B211-332DCBA40F9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.Models", "SimpleMVVM.Models\SimpleMVVM.Models.csproj", "{6C55CDB7-16D2-4E73-B211-332DCBA40F9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.ViewModels", "SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj", "{1E53C453-1192-4501-AACB-299884036648}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,26 @@ Global
 		{6C55CDB7-16D2-4E73-B211-332DCBA40F9C}.Release|x64.Build.0 = Release|Any CPU
 		{6C55CDB7-16D2-4E73-B211-332DCBA40F9C}.Release|x86.ActiveCfg = Release|Any CPU
 		{6C55CDB7-16D2-4E73-B211-332DCBA40F9C}.Release|x86.Build.0 = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|x64.Build.0 = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Debug|x86.Build.0 = Debug|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|ARM.Build.0 = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|ARM64.Build.0 = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|x64.ActiveCfg = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|x64.Build.0 = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|x86.ActiveCfg = Release|Any CPU
+		{1E53C453-1192-4501-AACB-299884036648}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

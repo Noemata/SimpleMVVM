@@ -18,10 +18,6 @@
         <converters:BoolToVisibilityConverter x:Name="BoolToVisibilityConverter"/>
     </Page.Resources>
     
-    <Page.DataContext>
-        <viewModels:ShellViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <Grid>
         <winui:NavigationView x:Name="NavigationView"
                               Header="{x:Bind ViewModel.Header, Mode=OneWay}"

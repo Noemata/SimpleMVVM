@@ -1,7 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 using MSWinUI = Microsoft.UI.Xaml.Controls;
 
@@ -9,6 +8,7 @@ using SimpleMVVM.Views;
 using SimpleMVVM.Services;
 using SimpleMVVM.Messages;
 using Microsoft.Toolkit.Mvvm.Input;
+using Windows.ApplicationModel;
 
 namespace SimpleMVVM.ViewModels
 {
@@ -52,11 +52,19 @@ namespace SimpleMVVM.ViewModels
         public IRelayCommand<Frame> FrameLoadedCommand { get; }
         public IRelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
 
-        public ShellViewModel()
+        // Ioc will resolve all these interfaces for us provided they have been configured in App.xaml.cs
+        public ShellViewModel(ISettingsService settingsService, IMessenger messenger, IUserNotificationService userNotificationService)
         {
-            _settingsService = Ioc.Default.GetService<ISettingsService>();
-            _messenger = Ioc.Default.GetService<IMessenger>();
-            _userNotificationService = Ioc.Default.GetService<IUserNotificationService>();
+            // Help the designer not fail and run faster.  Return early whenever a ViewModel constructor causes issues for the designer.
+            // The Ioc calls below are problematic if you have viewModels:ShellViewModel x:Name="ViewModel" in the View's XAML.  Specifying
+            // internal ShellViewModel ViewModel = Ioc.Default.GetService<ShellViewModel>() in the View's code behind is cleaner and
+            // supports VM parameters.  XAML requires parameterless constructors for a viewModels:ShellViewModel style reference.
+            if (DesignMode.DesignMode2Enabled)
+                return;
+
+            _settingsService = settingsService;
+            _messenger = messenger;
+            _userNotificationService = userNotificationService;
 
             _showVersion = _settingsService.GetValue<bool>(SettingsKeys.ShowVersionInfo);
 

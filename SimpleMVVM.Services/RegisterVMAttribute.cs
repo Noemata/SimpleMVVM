@@ -20,15 +20,13 @@ namespace SimpleMVVM.Services
         Transient
     }
 
-
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class RegisterVMAttributeAttribute : Attribute
     {
         public InstanceMode Mode { get; set; }
 
         public RegisterVMAttributeAttribute(InstanceMode mode) {
-            this.Mode = mode;
+            Mode = mode;
         }
-
     }
 }
