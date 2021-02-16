@@ -11,11 +11,11 @@ using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 using SimpleMVVM.Views;
 using SimpleMVVM.Helpers;
-using SimpleMVVM.Logging;
 using SimpleMVVM.Dialogs;
 using System.Reflection;
 using System.Linq;
 using SimpleMVVM.Services;
+using SimpleMVVM.Uwp.Services;
 
 namespace SimpleMVVM
 {
@@ -25,6 +25,11 @@ namespace SimpleMVVM
     sealed partial class App : Application
     {
         /// <summary>
+        /// Application version infromation.
+        /// </summary>
+        public static string AppVersion;
+
+        /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
@@ -32,6 +37,9 @@ namespace SimpleMVVM
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            var assembly = (typeof(App)).GetTypeInfo().Assembly;
+            AppVersion = assembly.GetName().Version.ToString();
         }
 
         /// <summary>
@@ -44,16 +52,10 @@ namespace SimpleMVVM
             // Ensure the UI is initialized
             if (Window.Current.Content is null)
             {
-                // Configure services.
-                ServiceCollection services = new ServiceCollection();
-                services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
-                services.AddSingleton<ILoggingService, DebugLoggingService>();
-                services.AddSingleton<DialogView>();
-
-                RegistVMInstances(services);
-
                 // Register services.
-                Ioc.Default.ConfigureServices(services.BuildServiceProvider());
+                Ioc.Default.ConfigureServices(ConfigureServices());
+
+                InitializeSettings();
 
                 Window.Current.Content = new ShellView();
 
@@ -68,6 +70,28 @@ namespace SimpleMVVM
 
                 Window.Current.Activate();
             }
+        }
+
+        private IServiceProvider ConfigureServices()
+        {
+            ServiceCollection services = new ServiceCollection();
+            services.AddSingleton<ISettingsService, SettingsService>();
+            services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
+            services.AddSingleton<ILoggingService, DebugLogger>();
+            services.AddSingleton<DialogView>();
+
+            RegistVMInstances(services);
+
+            return services.BuildServiceProvider();
+        }
+
+        private void InitializeSettings()
+        {
+            
+            ISettingsService settings = Ioc.Default.GetService<ISettingsService>();
+
+            // Initialize default settings
+            settings.SetValue(SettingsKeys.ShowVersionInfo, true, false);
         }
 
         void RegistVMInstances(ServiceCollection services)

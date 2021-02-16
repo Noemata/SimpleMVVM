@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-namespace SimpleMVVM.Logging
+namespace SimpleMVVM.Services
 {
     public interface ILoggingService
     {
-        Task Log(string message);
+       void Log(string message);
     }
 }
