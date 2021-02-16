@@ -6,6 +6,8 @@ namespace SimpleMVVM.Messages
     {
         BusyOn,
         BusyOff,
+        VersionOn,
+        VersionOff,
     }
 
     public sealed class ShellStateMessage : AsyncRequestMessage<ShellState>

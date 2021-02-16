@@ -1,6 +1,8 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
+﻿using Microsoft.Toolkit.Mvvm.Messaging;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+
 using SimpleMVVM.Services;
+using SimpleMVVM.Messages;
 
 namespace SimpleMVVM.ViewModels
 {
@@ -8,6 +10,7 @@ namespace SimpleMVVM.ViewModels
     public class SettingsViewModel : ObservableRecipient
     {
         private readonly ISettingsService _settingsService;
+        private readonly IMessenger _messenger;
 
         private bool _showVersion;
         public bool ShowVersion
@@ -16,7 +19,14 @@ namespace SimpleMVVM.ViewModels
             set
             {
                 if (SetProperty(ref _showVersion, value))
+                {
                     _settingsService.SetValue(SettingsKeys.ShowVersionInfo, value);
+
+                    if (value)
+                        _messenger.Send(new ShellStateMessage(ShellState.VersionOn));
+                    else
+                        _messenger.Send(new ShellStateMessage(ShellState.VersionOff));
+                }
             }
         }
 
@@ -27,9 +37,10 @@ namespace SimpleMVVM.ViewModels
             set => SetProperty(ref _message, value);
         }
 
-        public SettingsViewModel(ISettingsService settingsService)
+        public SettingsViewModel(ISettingsService settingsService, IMessenger messenger)
         {
             _settingsService = settingsService;
+            _messenger = messenger;
 
             _showVersion = _settingsService.GetValue<bool>(SettingsKeys.ShowVersionInfo);
 

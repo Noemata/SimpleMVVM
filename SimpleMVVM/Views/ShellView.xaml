@@ -84,5 +84,6 @@
         <Grid Background="DarkGray" Opacity="0.5" Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}">
             <ProgressRing Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Margin="40,0,0,0" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Width="200" Height="200" />
         </Grid>
+        <TextBlock Text="{x:Bind ViewModel.AppVersion}" FontSize="9" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{x:Bind ViewModel.ShowVersion, Mode=OneWay}" />
     </Grid>
 </Page>

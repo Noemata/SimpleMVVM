@@ -16,6 +16,7 @@ namespace SimpleMVVM.ViewModels
     public class ShellViewModel : ObservableRecipient
     {
         private readonly IUserNotificationService _userNotificationService;
+        private readonly ISettingsService _settingsService;
         private readonly IMessenger _messenger;
 
         private string _header = "Simple Microsoft MVVM Toolkit Sample";
@@ -36,19 +37,28 @@ namespace SimpleMVVM.ViewModels
         public bool IsSetting
         {
             get => _isSetting;
-            set
-            {
-                SetProperty(ref _isSetting, value);
-            }
+            set => SetProperty(ref _isSetting, value);
         }
+
+        private bool _showVersion;
+        public bool ShowVersion
+        {
+            get => _showVersion;
+            set => SetProperty(ref _showVersion, value);
+        }
+
+        public string AppVersion => App.AppVersion;
 
         public IRelayCommand<Frame> FrameLoadedCommand { get; }
         public IRelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
 
         public ShellViewModel()
         {
+            _settingsService = Ioc.Default.GetService<ISettingsService>();
             _messenger = Ioc.Default.GetService<IMessenger>();
             _userNotificationService = Ioc.Default.GetService<IUserNotificationService>();
+
+            _showVersion = _settingsService.GetValue<bool>(SettingsKeys.ShowVersionInfo);
 
             FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
             ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
@@ -60,6 +70,12 @@ namespace SimpleMVVM.ViewModels
 
                 if (m.State == ShellState.BusyOff)
                     IsBusy = false;
+
+                if (m.State == ShellState.VersionOn)
+                    ShowVersion = true;
+
+                if (m.State == ShellState.VersionOff)
+                    ShowVersion = false;
 
                 m.Reply(m.State);
             });
