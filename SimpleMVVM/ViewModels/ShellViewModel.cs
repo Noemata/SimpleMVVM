@@ -126,7 +126,9 @@ namespace SimpleMVVM.ViewModels
                 NavigationService.Navigate(typeof(SettingsView), null);
             }
             else
+            {
                 NavigationService.GoBack();
+            }
         }
     }
 }
