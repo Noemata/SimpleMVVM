@@ -1,14 +1,15 @@
-﻿using Microsoft.Xaml.Interactivity;
-using System;
-using System.Globalization;
+﻿using System;
 using System.Reflection;
 using System.Windows.Input;
+using System.Globalization;
 using Windows.UI.Xaml;
+
+using Microsoft.Xaml.Interactivity;
 
 namespace SimpleMVVM.Behaviors
 {
     /// <summary>
-    /// Behavior that will connect an UI event to a viewmodel Command, allowing the event arguments to be passed as the CommandParameter.
+    /// Behavior that will connect an UI event to a ViewModel Command, allowing the event arguments to be passed as the CommandParameter.
     /// </summary>
     public sealed class EventToCommandBehavior : Behavior<DependencyObject>
     {
@@ -52,15 +53,12 @@ namespace SimpleMVVM.Behaviors
             set => SetValue(PassArgumentsProperty, value);
         }
 
-
         private static void OnEventChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var behavior = (EventToCommandBehavior)d;
 
             if (behavior.AssociatedObject != null) // is not yet attached at initial load
-            {
                 behavior.AttachHandler((string)e.NewValue);
-            }
         }
 
         protected override void OnAttached()
@@ -74,14 +72,12 @@ namespace SimpleMVVM.Behaviors
         private void AttachHandler(string eventName)
         {
             if (_oldEvent != null && _detachEvent != null)
-            {
-                // detach old event
                 _detachEvent(_oldEvent);
-            }
 
             if (!string.IsNullOrEmpty(eventName))
             {
                 EventInfo eventInfo = AssociatedObject.GetType().GetEvent(eventName);
+
                 if (eventInfo != null)
                 {
                     MethodInfo addMethod = eventInfo.GetAddMethod();
@@ -89,6 +85,7 @@ namespace SimpleMVVM.Behaviors
                     ParameterInfo[] addParameters = addMethod.GetParameters();
                     Type delegateType = addParameters[0].ParameterType;
 
+                    // PassArguments == false makes the call with the sender instead.
                     Action<object, object> handler = (object sender, object eventArgs) => OnEvent(PassArguments == true ? eventArgs : sender);
 
                     MethodInfo handlerInvoke = handler.GetType().GetMethod(nameof(handler.Invoke));
@@ -98,10 +95,10 @@ namespace SimpleMVVM.Behaviors
                     Func<object> attachEvent = () =>
                     {
                         object result = addMethod.Invoke(AssociatedObject, new object[] { _handler });
+
                         if (result != null)
-                        {
                             return result;
-                        }
+
                         return _handler;
                     };
 
@@ -123,9 +120,7 @@ namespace SimpleMVVM.Behaviors
         private void OnEvent(object parameter)
         {
             if (Command != null && Command.CanExecute(parameter))
-            {
                 Command.Execute(parameter);
-            }
         }
     }
 }
