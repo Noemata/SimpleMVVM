@@ -7,7 +7,7 @@ using SimpleMVVM.Services;
 
 namespace SimpleMVVM.ViewModels
 {
-    [RegisterVMAttribute(InstanceMode.Transient)]
+    [RegisterVMWithIoc(InstanceMode.Transient)]
     public class HomeViewModel : ObservableRecipient
     {
         private readonly IMessenger _messenger;

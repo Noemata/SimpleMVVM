@@ -12,7 +12,7 @@ using Windows.ApplicationModel;
 
 namespace SimpleMVVM.ViewModels
 {
-    [RegisterVMAttribute(InstanceMode.Transient)]
+    [RegisterVMWithIoc(InstanceMode.Transient)]
     public class ShellViewModel : ObservableRecipient
     {
         private readonly IUserNotificationService _userNotificationService;

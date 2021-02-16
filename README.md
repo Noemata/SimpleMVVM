@@ -14,4 +14,42 @@ This project incorporates features that compensate for some of the limitations o
 
 Notes:
 
+What limitations?
+
+Persently, when you create a new ViewModel, you have to remember to wire it into your Ioc.  Most MVVM frameworks have this limitation.
+
+A simple solution to this little detail is to use an attribute as shown below:
+
+```
+    [RegisterVMWithIoc(InstanceMode.Transient)]
+    public class AboutViewModel : ObservableRecipient
+```
+
+Have a look at App.xaml.cs to see the details of how this is done.
+
+Another missing capability from MVVM frameworks in general is the ability to send control events to your ViewModel.  For the ShellViewModel in particular, there is no need to adhere to a strict MVVM approach.
+
+Having EventToCommandBehavior allows you to work around issues such as the one shown below:
+
+```
+        <winui:NavigationView x:Name="NavigationView"
+                              Header="{x:Bind ViewModel.Header, Mode=OneWay}"
+                              IsBackButtonVisible="Collapsed"
+                              Background="Transparent"
+                              PaneDisplayMode="LeftCompact"
+                              IsSettingsVisible="False">
+            <i:Interaction.Behaviors>
+                <ui:EventToCommandBehavior 
+                            Event="ItemInvoked"
+                            Command="{x:Bind ViewModel.ItemInvokedCommand}" 
+                            PassArguments="true"/>
+            </i:Interaction.Behaviors>
+
+            ...
+
+```
+
+Where we need to handle navigation events within the ShellViewModel to coordinate with other executive level control operations.
+
 Please let me know if you see ways to improve this sample.
+

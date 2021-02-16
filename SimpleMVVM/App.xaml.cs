@@ -108,7 +108,7 @@ namespace SimpleMVVM
                 if (a.FullName != AppAssemblyFullName && !a.FullName.Contains("ViewModels"))
                     continue;
 
-                var types = a.GetTypes().Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterVMAttributeAttribute>()?.Mode })
+                var types = a.GetTypes().Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterVMWithIocAttribute>()?.Mode })
                 .Where(o => o.Mode != null && o.Mode != InstanceMode.None);
 
                 foreach (var t in types)
