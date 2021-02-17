@@ -10,7 +10,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace SimpleMVVM.ViewModels
 {
-    [RegisterVMWithIoc(InstanceMode.Transient)]
+    [RegisterWithIoc(InstanceMode.Transient)]
     public class CredentialsListViewModel : ObservableRecipient
     {
         private readonly ILoggingService _log;

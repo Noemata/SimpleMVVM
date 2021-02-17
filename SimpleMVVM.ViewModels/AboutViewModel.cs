@@ -3,7 +3,7 @@ using SimpleMVVM.Services;
 
 namespace SimpleMVVM.ViewModels
 {
-    [RegisterVMWithIoc(InstanceMode.Transient)]
+    [RegisterWithIoc(InstanceMode.Transient)]
     public class AboutViewModel : ObservableRecipient
     {
         private string _message;

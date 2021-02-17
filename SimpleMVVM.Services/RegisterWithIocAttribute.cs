@@ -21,11 +21,11 @@ namespace SimpleMVVM.Services
     }
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class RegisterVMWithIocAttribute : Attribute
+    public class RegisterWithIocAttribute : Attribute
     {
         public InstanceMode Mode { get; set; }
 
-        public RegisterVMWithIocAttribute(InstanceMode mode) {
+        public RegisterWithIocAttribute(InstanceMode mode) {
             Mode = mode;
         }
     }

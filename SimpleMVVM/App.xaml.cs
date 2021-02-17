@@ -30,11 +30,6 @@ namespace SimpleMVVM
         public static string AppVersion;
 
         /// <summary>
-        /// Application version infromation.
-        /// </summary>
-        static string AppAssemblyFullName;
-
-        /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
@@ -45,8 +40,8 @@ namespace SimpleMVVM
 
             var assembly = (typeof(App)).GetTypeInfo().Assembly;
             AppVersion = assembly.GetName().Version.ToString();
-            AppAssemblyFullName = assembly.FullName;
-            // MP! resolve: better way to foce assembly load.
+
+            // MP! resolve: better way to force assembly load.
             typeof(SimpleMVVM_ViewModels_ForceLoad).Assembly.GetName();
         }
 
@@ -88,11 +83,14 @@ namespace SimpleMVVM
             services.AddSingleton<ILoggingService, DebugLogger>();
             services.AddSingleton<IUserNotificationService, UserNotificationService>();
 
-            RegistVMInstances(services);
+            RegisterWithIoc(services);
 
             return services.BuildServiceProvider();
         }
 
+        /// <summary>
+        /// Initialize settings default values.
+        /// </summary>
         private void InitializeSettings()
         {
             ISettingsService settings = Ioc.Default.GetService<ISettingsService>();
@@ -101,14 +99,22 @@ namespace SimpleMVVM
             settings.SetValue(SettingsKeys.ShowVersionInfo, true, false);
         }
 
-        void RegistVMInstances(ServiceCollection services)
+        /// <summary>
+        /// Register attributed classes with your Ioc container.
+        /// </summary>
+        /// <param name="services">The ServiceCollection to be used.</param>
+        void RegisterWithIoc(ServiceCollection services)
         {
+            string localname = (typeof(App)).GetTypeInfo().Assembly.GetName().Name;
+
             foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies())
             {
-                if (a.FullName != AppAssemblyFullName && !a.FullName.Contains("ViewModels"))
+                string name = a.GetName().Name;
+
+                if (name != localname && !name.EndsWith("ViewModels"))
                     continue;
 
-                var types = a.GetTypes().Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterVMWithIocAttribute>()?.Mode })
+                var types = a.GetTypes().Select(t => new { T = t, Mode = t.GetCustomAttribute<RegisterWithIocAttribute>()?.Mode })
                 .Where(o => o.Mode != null && o.Mode != InstanceMode.None);
 
                 foreach (var t in types)

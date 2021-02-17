@@ -23,11 +23,11 @@ Persently, when you create a new ViewModel, you have to remember to wire it into
 A simple solution to this little detail is to use an attribute as shown below:
 
 ```
-    [RegisterVMWithIoc(InstanceMode.Transient)]
+    [RegisterWithIoc(InstanceMode.Transient)]
     public class AboutViewModel : ObservableRecipient
 ```
 
-This can be automatically incorporated via a project template whenever you generate a ViewModel class.
+This can be incorporated automatically via a project template whenever you generate a ViewModel class.
 
 Have a look at App.xaml.cs to see the details of how this approach works.
 

@@ -6,7 +6,7 @@ using SimpleMVVM.Messages;
 
 namespace SimpleMVVM.ViewModels
 {
-    [RegisterVMWithIoc(InstanceMode.Transient)]
+    [RegisterWithIoc(InstanceMode.Transient)]
     public class SettingsViewModel : ObservableRecipient
     {
         private readonly ISettingsService _settingsService;
