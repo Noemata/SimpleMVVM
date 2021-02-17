@@ -78,6 +78,7 @@ namespace SimpleMVVM
         private IServiceProvider ConfigureServices()
         {
             ServiceCollection services = new ServiceCollection();
+            services.AddSingleton<IInDesignModeService, InDesignModeService>();
             services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             services.AddSingleton<ILoggingService, DebugLogger>();
