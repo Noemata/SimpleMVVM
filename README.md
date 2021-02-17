@@ -9,8 +9,10 @@ This project incorporates features that compensate for some of the limitations o
 ## Credits
 * MVVM and Toolkit ideas: https://github.com/windows-toolkit/MVVM-Samples , https://github.com/XamlBrewer/UWP-MVVM-Toolkit-Sample , https://github.com/veler/PaZword
 
-## Screenshot
-![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/ScreenShot.png)
+## Screenshots
+![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/HomeView.png)
+
+![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/ListView.png)
 
 ## Notes
 
@@ -53,5 +55,5 @@ Having EventToCommandBehavior allows you to work around issues such as the one s
 
 Navigation events and other like control events can be dispatched within the ShellViewModel to coordinate with other executive level control operations.  Think of your ShellViewModel as your UI escape hatch where anything goes allowing the rest of your MVVM design to stay clean and sober.
 
-Please let me know if you see ways to improve this sample or if you have a difference of opinion in the approach taken.
+Please let me know if you see ways to improve this sample or if you have a difference of opinion with the approach taken.
 

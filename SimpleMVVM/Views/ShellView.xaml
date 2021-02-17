@@ -36,6 +36,8 @@
 
                 <winui:NavigationViewItem Icon="Home" Content="Home" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
 
+                <winui:NavigationViewItem Icon="List" Content="List" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
+
                 <winui:NavigationViewItem Content="About" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" >
                     <winui:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE783;" />

@@ -9,6 +9,7 @@ using SimpleMVVM.Services;
 using SimpleMVVM.Messages;
 using Microsoft.Toolkit.Mvvm.Input;
 using Windows.ApplicationModel;
+using Nito.AsyncEx;
 
 namespace SimpleMVVM.ViewModels
 {
@@ -109,6 +110,12 @@ namespace SimpleMVVM.ViewModels
                             Header = option;
                             NavigationService.Navigate(typeof(HomeView), null);
                             break;
+
+                        case "List":
+                            Header = option;
+                            NavigationService.Navigate(typeof(CredentialsListView), null);
+                            break;
+
                         case "About":
                             Header = option;
                             NavigationService.Navigate(typeof(AboutView), null);

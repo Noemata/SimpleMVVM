@@ -7,8 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM", "SimpleMVVM\Si
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{BEC6D244-E037-461A-8EB9-AA37FA756081}"
 	ProjectSection(SolutionItems) = preProject
+		HomeView.png = HomeView.png
+		ListView.png = ListView.png
 		README.md = README.md
-		ScreenShot.png = ScreenShot.png
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.Services", "SimpleMVVM.Services\SimpleMVVM.Services.csproj", "{A0194240-A434-45CD-BC8D-45FAD08AF682}"

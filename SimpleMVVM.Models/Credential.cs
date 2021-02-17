@@ -2,16 +2,16 @@
 
 namespace SimpleMVVM.Models
 {
-    public class Credentials : ObservableObject
+    public class Credential : ObservableObject
     {
 
         private string _name;
         private string _email;
         private string _role;
 
-        public Credentials() {}
+        public Credential() {}
 
-        public Credentials(string name, string email, string role)
+        public Credential(string name, string email, string role)
         {
             Name = name;
             Email = email;

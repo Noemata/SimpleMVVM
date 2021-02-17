@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SimpleMVVM.Models\SimpleMVVM.Models.csproj" />
     <ProjectReference Include="..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
   </ItemGroup>
 
