@@ -1,4 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
+using Windows.ApplicationModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 
@@ -7,9 +9,6 @@ using MSWinUI = Microsoft.UI.Xaml.Controls;
 using SimpleMVVM.Views;
 using SimpleMVVM.Services;
 using SimpleMVVM.Messages;
-using Microsoft.Toolkit.Mvvm.Input;
-using Windows.ApplicationModel;
-using Nito.AsyncEx;
 
 namespace SimpleMVVM.ViewModels
 {

@@ -46,7 +46,7 @@ namespace SimpleMVVM
             var assembly = (typeof(App)).GetTypeInfo().Assembly;
             AppVersion = assembly.GetName().Version.ToString();
             AppAssemblyFullName = assembly.FullName;
-            // MP! resolve: better way to foce assembl load.
+            // MP! resolve: better way to foce assembly load.
             typeof(SimpleMVVM_ViewModels_ForceLoad).Assembly.GetName();
         }
 
