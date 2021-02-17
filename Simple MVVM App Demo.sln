@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM", "SimpleMVVM\SimpleMVVM.csproj", "{8E395428-5919-41BA-AADE-9F3AD91868B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVMuwp", "SimpleMVVMuwp\SimpleMVVMuwp.csproj", "{8E395428-5919-41BA-AADE-9F3AD91868B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{BEC6D244-E037-461A-8EB9-AA37FA756081}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.Uwp.Services", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.Models", "SimpleMVVM.Models\SimpleMVVM.Models.csproj", "{6C55CDB7-16D2-4E73-B211-332DCBA40F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.ViewModels", "SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj", "{1E53C453-1192-4501-AACB-299884036648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.ViewModels", "SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj", "{1E53C453-1192-4501-AACB-299884036648}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
