@@ -25,7 +25,8 @@ namespace SimpleMVVM.Services
     {
         public InstanceMode Mode { get; set; }
 
-        public RegisterWithIocAttribute(InstanceMode mode) {
+        public RegisterWithIocAttribute(InstanceMode mode)
+        {
             Mode = mode;
         }
     }
