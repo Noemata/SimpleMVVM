@@ -86,6 +86,7 @@ namespace SimpleMVVM.ViewModels
 
         private void SetupNavigationService(Frame frame)
         {
+            // MP! fixme: why is frame null??
             if (frame != null)
                 NavigationService.Frame = frame;
         }
