@@ -1,5 +1,6 @@
-﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+
 using SimpleMVVM.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -14,7 +15,7 @@ namespace SimpleMVVM.Views
     {
         public ShellView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private bool bNot(bool value) => value ? false : true;

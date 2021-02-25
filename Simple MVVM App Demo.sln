@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.ViewModels", "Si
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "SimpleMVVM (Package)", "SimpleMVVM\SimpleMVVM (Package)\SimpleMVVM (Package).wapproj", "{87E0BA1B-C6AC-42AA-A2D8-AFBF034AB799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM", "SimpleMVVM\SimpleMVVM\SimpleMVVM.csproj", "{12579B90-6C7C-4391-850E-6EFC52129D22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM", "SimpleMVVM\SimpleMVVM\SimpleMVVM.csproj", "{12579B90-6C7C-4391-850E-6EFC52129D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.WinUI.Services", "SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj", "{C3344CA6-F04E-4429-8F91-E0987AF8CE44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -184,6 +186,26 @@ Global
 		{12579B90-6C7C-4391-850E-6EFC52129D22}.Release|x64.Build.0 = Release|x64
 		{12579B90-6C7C-4391-850E-6EFC52129D22}.Release|x86.ActiveCfg = Release|x86
 		{12579B90-6C7C-4391-850E-6EFC52129D22}.Release|x86.Build.0 = Release|x86
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|x64.Build.0 = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Debug|x86.Build.0 = Debug|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|ARM.Build.0 = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|ARM64.Build.0 = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|x64.ActiveCfg = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|x64.Build.0 = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|x86.ActiveCfg = Release|Any CPU
+		{C3344CA6-F04E-4429-8F91-E0987AF8CE44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

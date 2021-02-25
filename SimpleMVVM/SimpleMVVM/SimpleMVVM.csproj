@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
+    <ProjectReference Include="..\..\SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

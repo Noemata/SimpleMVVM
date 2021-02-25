@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SimpleMVVM.Views"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
-    xmlns:viewModels="using:SimpleMVVM.ViewModels"
     xmlns:converters="using:SimpleMVVM.Converters"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"

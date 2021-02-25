@@ -63,6 +63,9 @@ namespace SimpleMVVM.ViewModels
 
             _messenger = messenger;
 
+            FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
+            ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
+
             _messenger.Register<ShellStateMessage>(this, (r, m) =>
             {
                 if (m.State == ShellState.BusyOn)
@@ -79,6 +82,43 @@ namespace SimpleMVVM.ViewModels
 
                 m.Reply(m.State);
             });
+        }
+
+        private void SetupNavigationService(Frame frame)
+        {
+            if (frame != null)
+                NavigationService.Frame = frame;
+        }
+
+        private void ExecuteItemInvokedCommand(MSWinUI.NavigationViewItemInvokedEventArgs args)
+        {
+            if (args != null)
+            {
+                string option = args.InvokedItem as string;
+
+                if (option != null)
+                {
+                    switch (option)
+                    {
+                        case "Home":
+                            Header = option;
+                            //NavigationService.Navigate(typeof(HomeView), null);
+                            break;
+
+                        case "List":
+                            Header = option;
+                            //NavigationService.Navigate(typeof(CredentialsListView), null);
+                            break;
+
+                        case "About":
+                            Header = option;
+                            //NavigationService.Navigate(typeof(AboutView), null);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }
