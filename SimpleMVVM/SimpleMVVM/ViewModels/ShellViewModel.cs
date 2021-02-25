@@ -1,0 +1,84 @@
+﻿using Microsoft.UI.Xaml.Controls;
+
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+
+using MSWinUI = Microsoft.UI.Xaml.Controls;
+
+using SimpleMVVM.Views;
+using SimpleMVVM.Services;
+using SimpleMVVM.Messages;
+using Windows.ApplicationModel;
+
+namespace SimpleMVVM.ViewModels
+{
+    [RegisterWithIoc(InstanceMode.Transient)]
+    public class ShellViewModel : ObservableRecipient
+    {
+        private readonly IMessenger _messenger;
+
+        private string _header = "Simple Microsoft MVVM Toolkit Sample";
+        public string Header
+        {
+            get => _header;
+            set => SetProperty(ref _header, value);
+        }
+
+        private bool _isBusy = false;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
+        private bool _isSetting = false;
+        public bool IsSetting
+        {
+            get => _isSetting;
+            set => SetProperty(ref _isSetting, value);
+        }
+
+        private bool _showVersion = true; // MP! todo: load settings to get value
+        public bool ShowVersion
+        {
+            get => _showVersion;
+            set => SetProperty(ref _showVersion, value);
+        }
+
+        public string AppVersion => App.AppVersion;
+
+        public IRelayCommand<Frame> FrameLoadedCommand { get; }
+        public IRelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
+
+        // Ioc will resolve all these interfaces for us provided they have been configured in App.xaml.cs
+        public ShellViewModel(IMessenger messenger)
+        {
+            // Help the designer not fail and run faster.  Return early whenever a ViewModel constructor causes issues for the designer.
+            // The Ioc calls below are problematic if you have viewModels:ShellViewModel x:Name="ViewModel" in the View's XAML.  Specifying
+            // internal ShellViewModel ViewModel = Ioc.Default.GetService<ShellViewModel>() in the View's code behind is cleaner and
+            // supports VM parameters.  XAML requires parameterless constructors for a viewModels:ShellViewModel style reference.
+            if (DesignMode.DesignMode2Enabled)
+                return;
+
+            _messenger = messenger;
+
+            _messenger.Register<ShellStateMessage>(this, (r, m) =>
+            {
+                if (m.State == ShellState.BusyOn)
+                    IsBusy = true;
+
+                if (m.State == ShellState.BusyOff)
+                    IsBusy = false;
+
+                if (m.State == ShellState.VersionOn)
+                    ShowVersion = true;
+
+                if (m.State == ShellState.VersionOff)
+                    ShowVersion = false;
+
+                m.Reply(m.State);
+            });
+        }
+    }
+}
