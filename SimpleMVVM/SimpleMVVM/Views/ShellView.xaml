@@ -24,6 +24,7 @@
                               PaneDisplayMode="LeftCompact"
                               IsSettingsVisible="False">
             <i:Interaction.Behaviors>
+                <!-- Note: PassArguments="false" causes sender to be passed to ViewModel (very handy) -->
                 <ui:EventToCommandBehavior 
                             Event="ItemInvoked"
                             Command="{x:Bind ViewModel.ItemInvokedCommand}" 
@@ -44,7 +45,6 @@
 
             </winui:NavigationView.MenuItems>
 
-            <!-- Note: PassArguments="false" causes sender to be passed to ViewModel (very handy) -->
             <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="14 14" >
                 <i:Interaction.Behaviors>
                     <ic:EventTriggerBehavior EventName="Loaded">
