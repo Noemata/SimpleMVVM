@@ -9,6 +9,7 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\AboutView.xaml" />
     <None Remove="Views\ShellView.xaml" />
   </ItemGroup>
 
@@ -22,7 +23,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
+    <ProjectReference Include="..\..\SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

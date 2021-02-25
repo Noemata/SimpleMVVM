@@ -7,9 +7,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
 
-using SimpleMVVM.Services;
-
-namespace SimpleMVVM.Uwp.Services
+namespace SimpleMVVM.Services
 {
     public class UserNotificationService : IUserNotificationService
     {

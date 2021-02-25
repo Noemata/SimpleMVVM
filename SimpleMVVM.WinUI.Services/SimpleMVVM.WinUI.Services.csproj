@@ -9,4 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview4.210210.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
+  </ItemGroup>
 </Project>

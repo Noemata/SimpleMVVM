@@ -3,11 +3,9 @@ using System.Threading.Tasks;
 
 using Windows.ApplicationModel.DataTransfer;
 
-using SimpleMVVM.Services;
-
 #nullable enable
 
-namespace SimpleMVVM.Uwp.Services
+namespace SimpleMVVM.Services
 {
     /// <summary>
     /// A <see langword="class"/> that interacts with the system clipboard

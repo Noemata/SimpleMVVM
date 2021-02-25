@@ -11,6 +11,7 @@ using Windows.ApplicationModel;
 
 using SimpleMVVM.Views;
 using SimpleMVVM.Services;
+using SimpleMVVM.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -38,6 +39,9 @@ namespace SimpleMVVM
 
             var assembly = (typeof(App)).GetTypeInfo().Assembly;
             AppVersion = assembly.GetName().Version.ToString();
+
+            // MP! resolve: better way to force assembly load.
+            typeof(SimpleMVVM_ViewModels_ForceLoad).Assembly.GetName();
         }
 
         /// <summary>
@@ -56,6 +60,7 @@ namespace SimpleMVVM
         private IServiceProvider ConfigureServices()
         {
             ServiceCollection services = new ServiceCollection();
+            services.AddSingleton<IInDesignModeService, InDesignModeService>();
             services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             services.AddSingleton<ILoggingService, DebugLogger>();
 

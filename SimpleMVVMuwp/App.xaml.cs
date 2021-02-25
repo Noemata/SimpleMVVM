@@ -14,7 +14,6 @@ using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using SimpleMVVM.Views;
 using SimpleMVVM.Helpers;
 using SimpleMVVM.Services;
-using SimpleMVVM.Uwp.Services;
 using SimpleMVVM.ViewModels;
 
 namespace SimpleMVVM

@@ -112,7 +112,7 @@ namespace SimpleMVVM.ViewModels
 
                         case "About":
                             Header = option;
-                            //NavigationService.Navigate(typeof(AboutView), null);
+                            NavigationService.Navigate(typeof(AboutView), null);
                             break;
                         default:
                             break;

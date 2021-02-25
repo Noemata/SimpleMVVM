@@ -3,9 +3,8 @@ using System.Runtime.CompilerServices;
 using Windows.Storage;
 using Windows.Foundation.Collections;
 using Microsoft.Toolkit.Diagnostics;
-using SimpleMVVM.Services;
 
-namespace SimpleMVVM.Uwp.Services
+namespace SimpleMVVM.Services
 {
     /// <summary>
     /// A simple <see langword="class"/> that handles the local app settings
