@@ -43,7 +43,7 @@ namespace SimpleMVVM.ViewModels
             set => SetProperty(ref _isSetting, value);
         }
 
-        private bool _showVersion = true; // MP! todo: load settings to get value
+        private bool _showVersion;
         public bool ShowVersion
         {
             get => _showVersion;
@@ -68,6 +68,8 @@ namespace SimpleMVVM.ViewModels
             _settingsService = settingsService;
             _messenger = messenger;
             _userNotificationService = userNotificationService;
+
+            _showVersion = _settingsService.GetValue<bool>(SettingsKeys.ShowVersionInfo);
 
             FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
             ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
