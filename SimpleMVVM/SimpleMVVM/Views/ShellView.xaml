@@ -62,9 +62,26 @@
                 </Frame.ContentTransitions>
             </Frame>
         </winui:NavigationView>
+        <!--
+        WinUI 2.4 and up has broken how the footer previously worked :-(
+        So we resort to this nonesense.  Why a toggle?  To have a different setup
+        for each page selected.  Complex apps need this else you get lost in setup
+        tabs and can't relate your setup action back to where you were working.
+        -->
+        <Grid VerticalAlignment="Bottom">
+            <ToggleButton CornerRadius="0"
+                          ToolTipService.ToolTip="Settings"
+                          Width="40"
+                          Click="{x:Bind ViewModel.OnSettings, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.IsSetting, Mode=TwoWay}">
+                <FontIcon Glyph="&#xE115;"/>
+            </ToggleButton>
+        </Grid>
 
-        <TextBlock Text="Shell View" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        
+        <Grid Background="DarkGray" Opacity="0.5" Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}">
+            <ProgressRing Visibility="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Margin="40,0,0,0" IsActive="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Width="200" Height="200" />
+        </Grid>
+
         <TextBlock Text="{x:Bind ViewModel.AppVersion}" FontSize="9" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{x:Bind ViewModel.ShowVersion, Mode=OneWay}" />
     </Grid>
 </Window>

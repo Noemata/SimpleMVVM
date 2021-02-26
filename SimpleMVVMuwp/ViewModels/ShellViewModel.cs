@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+using Windows.UI.Xaml.Controls;
 using Windows.ApplicationModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
@@ -133,6 +134,7 @@ namespace SimpleMVVM.ViewModels
                 if (NavigationService.Frame.CurrentSourcePageType == null)
                 {
                     await _userNotificationService.MessageDialogAsync("Notice:", "Navigate to a page before selecting settings.");
+
                     IsSetting = false;
                     return;
                 }

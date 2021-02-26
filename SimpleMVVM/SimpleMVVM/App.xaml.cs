@@ -53,7 +53,10 @@ namespace SimpleMVVM
         {
             Ioc.Default.ConfigureServices(ConfigureServices());
 
+            InitializeSettings();
+
             m_window = new ShellView();
+
             m_window.Activate();
         }
 
@@ -61,12 +64,25 @@ namespace SimpleMVVM
         {
             ServiceCollection services = new ServiceCollection();
             services.AddSingleton<IInDesignModeService, InDesignModeService>();
+            services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             services.AddSingleton<ILoggingService, DebugLogger>();
+            services.AddSingleton<IUserNotificationService, UserNotificationService>();
 
             RegisterWithIoc(services);
 
             return services.BuildServiceProvider();
+        }
+
+        /// <summary>
+        /// Initialize settings default values.
+        /// </summary>
+        private void InitializeSettings()
+        {
+            ISettingsService settings = Ioc.Default.GetService<ISettingsService>();
+
+            // Initialize default settings
+            settings.SetValue(SettingsKeys.ShowVersionInfo, true, false);
         }
 
         /// <summary>
@@ -110,6 +126,7 @@ namespace SimpleMVVM
             // Save application state and stop any background activity
         }
 
-        private Window m_window;
+        //private Window m_window;
+        public static Window m_window;
     }
 }

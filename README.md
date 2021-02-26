@@ -6,6 +6,8 @@ Description:
 
 This project incorporates features that compensate for some of the limitations of Microsoft's MVVM Toolkit. The demo app is simple enough to be digestable yet complicated enough to be representative of real world MVVM usage.
 
+Ancillary to the evaluation MVVM Toolkit usage, this project also attempts to share code between WinUI 3 and UWP in a manner that minimize the differences (WIP).
+
 ## Credits
 * MVVM and Toolkit ideas: https://github.com/windows-toolkit/MVVM-Samples , https://github.com/XamlBrewer/UWP-MVVM-Toolkit-Sample , https://github.com/veler/PaZword
 

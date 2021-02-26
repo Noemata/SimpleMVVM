@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 using SimpleMVVM.ViewModels;
+using SimpleMVVM.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -16,6 +17,8 @@ namespace SimpleMVVM.Views
         public ShellView()
         {
             InitializeComponent();
+
+            GlobalVariable.ContentFrame = this.ContentFrame;
         }
 
         private bool bNot(bool value) => value ? false : true;

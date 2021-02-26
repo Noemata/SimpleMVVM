@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using System;
+using Microsoft.UI.Xaml.Controls;
 
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
@@ -10,12 +11,15 @@ using SimpleMVVM.Views;
 using SimpleMVVM.Services;
 using SimpleMVVM.Messages;
 using Windows.ApplicationModel;
+using SimpleMVVM.Helpers;
 
 namespace SimpleMVVM.ViewModels
 {
     [RegisterWithIoc(InstanceMode.Transient)]
     public class ShellViewModel : ObservableRecipient
     {
+        private readonly IUserNotificationService _userNotificationService;
+        private readonly ISettingsService _settingsService;
         private readonly IMessenger _messenger;
 
         private string _header = "Simple Microsoft MVVM Toolkit Sample";
@@ -52,7 +56,7 @@ namespace SimpleMVVM.ViewModels
         public IRelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
 
         // Ioc will resolve all these interfaces for us provided they have been configured in App.xaml.cs
-        public ShellViewModel(IMessenger messenger)
+        public ShellViewModel(ISettingsService settingsService, IMessenger messenger, IUserNotificationService userNotificationService)
         {
             // Help the designer not fail and run faster.  Return early whenever a ViewModel constructor causes issues for the designer.
             // The Ioc calls below are problematic if you have viewModels:ShellViewModel x:Name="ViewModel" in the View's XAML.  Specifying
@@ -61,7 +65,9 @@ namespace SimpleMVVM.ViewModels
             if (DesignMode.DesignMode2Enabled)
                 return;
 
+            _settingsService = settingsService;
             _messenger = messenger;
+            _userNotificationService = userNotificationService;
 
             FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
             ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
@@ -86,9 +92,14 @@ namespace SimpleMVVM.ViewModels
 
         private void SetupNavigationService(Frame frame)
         {
+            // MP! resolve: better way/place to initialize XamlRoot for ContentDialogs
+            _userNotificationService.XamlRoot = App.m_window.Content.XamlRoot;
+
             // MP! fixme: why is frame null??
             if (frame != null)
                 NavigationService.Frame = frame;
+            //else
+            //    NavigationService.Frame = GlobalVariable.ContentFrame; // MP! dumb: kluge to get things working for now
         }
 
         private void ExecuteItemInvokedCommand(MSWinUI.NavigationViewItemInvokedEventArgs args)
@@ -103,12 +114,12 @@ namespace SimpleMVVM.ViewModels
                     {
                         case "Home":
                             Header = option;
-                            //NavigationService.Navigate(typeof(HomeView), null);
+                            NavigationService.Navigate(typeof(HomeView), null);
                             break;
 
                         case "List":
                             Header = option;
-                            //NavigationService.Navigate(typeof(CredentialsListView), null);
+                            NavigationService.Navigate(typeof(CredentialsListView), null);
                             break;
 
                         case "About":
@@ -119,6 +130,26 @@ namespace SimpleMVVM.ViewModels
                             break;
                     }
                 }
+            }
+        }
+
+        public async void OnSettings()
+        {
+            if (IsSetting)
+            {
+                if (NavigationService.Frame.CurrentSourcePageType == null)
+                {
+                    await _userNotificationService.MessageDialogAsync("Notice:", "Navigate to a page before selecting settings.");
+
+                    IsSetting = false;
+                    return;
+                }
+
+                NavigationService.Navigate(typeof(SettingsView), null);
+            }
+            else
+            {
+                NavigationService.GoBack();
             }
         }
     }

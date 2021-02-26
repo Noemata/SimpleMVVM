@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 using Windows.UI;
-using Windows.UI.Xaml;
 using Windows.UI.Popups;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Controls;
 
 namespace SimpleMVVM.Services
 {
@@ -139,6 +139,8 @@ namespace SimpleMVVM.Services
                 CloseButtonText = buttonText
             };
 
+            dialog.XamlRoot = (XamlRoot)XamlRoot;
+
             await dialog.ShowAsync();
         }
 
@@ -183,6 +185,9 @@ namespace SimpleMVVM.Services
                 SecondaryButtonText = noButtonText,
                 CloseButtonText = cancelButtonText
             };
+
+            dialog.XamlRoot = (XamlRoot)XamlRoot;
+
             var result = await dialog.ShowAsync();
 
             if (result == ContentDialogResult.None)
@@ -231,6 +236,7 @@ namespace SimpleMVVM.Services
                 Text = defaultText,
                 SelectionStart = defaultText.Length
             };
+
             var dialog = new ContentDialog
             {
                 Content = inputTextBox,
@@ -239,6 +245,8 @@ namespace SimpleMVVM.Services
                 PrimaryButtonText = okButtonText,
                 SecondaryButtonText = cancelButtonText
             };
+
+            dialog.XamlRoot = (XamlRoot)XamlRoot;
 
             if (await dialog.ShowAsync() == ContentDialogResult.Primary)
             {
@@ -292,6 +300,7 @@ namespace SimpleMVVM.Services
                 BorderThickness = new Thickness(1),
                 BorderBrush = new SolidColorBrush((Color)Application.Current.Resources["CustomDialogBorderColor"])
             };
+
             var dialog = new ContentDialog
             {
                 Content = inputTextBox,
@@ -300,6 +309,8 @@ namespace SimpleMVVM.Services
                 PrimaryButtonText = okButtonText,
                 SecondaryButtonText = cancelButtonText
             };
+
+            dialog.XamlRoot = (XamlRoot)XamlRoot;
 
             if (await dialog.ShowAsync() == ContentDialogResult.Primary)
             {

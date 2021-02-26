@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <RootNamespace>SimpleMVVM</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
@@ -10,6 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Views\AboutView.xaml" />
+    <None Remove="Views\CredentialsListView.xaml" />
+    <None Remove="Views\HomeView.xaml" />
+    <None Remove="Views\SettingsView.xaml" />
     <None Remove="Views\ShellView.xaml" />
   </ItemGroup>
 
@@ -22,9 +25,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SimpleMVVM.Models\SimpleMVVM.Models.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\CredentialsListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
