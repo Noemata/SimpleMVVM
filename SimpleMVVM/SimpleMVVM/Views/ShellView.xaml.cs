@@ -17,8 +17,6 @@ namespace SimpleMVVM.Views
         public ShellView()
         {
             InitializeComponent();
-
-            GlobalVariable.ContentFrame = this.ContentFrame;
         }
 
         private bool bNot(bool value) => value ? false : true;

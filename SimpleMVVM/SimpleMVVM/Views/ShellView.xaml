@@ -48,7 +48,11 @@
             <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="14 14" >
                 <i:Interaction.Behaviors>
                     <ic:EventTriggerBehavior EventName="Loaded">
+                        <!--
+                        WinUI 3 Preview 4 fails on ElementName bindings
                         <ic:InvokeCommandAction Command="{x:Bind ViewModel.FrameLoadedCommand}" CommandParameter="{Binding ElementName=ContentFrame}"/>
+                        -->
+                        <ic:InvokeCommandAction Command="{x:Bind ViewModel.FrameLoadedCommand}" CommandParameter="{x:Bind ContentFrame}"/>
                     </ic:EventTriggerBehavior>
                 </i:Interaction.Behaviors>
                 <Frame.ContentTransitions>

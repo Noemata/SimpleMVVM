@@ -4,7 +4,6 @@ namespace SimpleMVVM.Models
 {
     public class Credential : ObservableObject
     {
-
         private string _name;
         private string _email;
         private string _role;

@@ -61,13 +61,6 @@ Navigation events and other like control events can be dispatched within the She
 
 Please let me know if you see ways to improve this sample or if you have a difference of opinion with the approach taken.
 
-Lastly, search for and uncomment the following lines in ShellViewModel.cs to enable the workaround for the WinUI XAML Behaviors bug:
-
-```
-#if !WINDOWS_UWP
-            //else
-            //    NavigationService.Frame = GlobalVariable.ContentFrame; // MP! dumb: kluge to get things working for now
-#endif
-```
+Lastly, the following binding expression: CommandParameter="{Binding ElementName=ContentFrame} was changed to CommandParameter="{x:Bind ContentFrame} due to a bug in WinUI 3 Preview 4.
 
 Other than things that do not work yet, the differences between WinUI and UWP are fairly minor.  You can leverage UWP to develop for WinUI today as demonstrated by SimpleMVVM.

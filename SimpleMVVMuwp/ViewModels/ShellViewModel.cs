@@ -15,9 +15,6 @@ using MSWinUI = Microsoft.UI.Xaml.Controls;
 using SimpleMVVM.Views;
 using SimpleMVVM.Services;
 using SimpleMVVM.Messages;
-#if !WINDOWS_UWP
-using SimpleMVVM.Helpers;
-#endif
 
 namespace SimpleMVVM.ViewModels
 {
@@ -105,13 +102,8 @@ namespace SimpleMVVM.ViewModels
             _userNotificationService.XamlRoot = App.m_window.Content.XamlRoot;
 #endif
 
-            // MP! fixme: why is frame null for WinUI??
             if (frame != null)
                 NavigationService.Frame = frame;
-#if !WINDOWS_UWP
-            //else
-            //    NavigationService.Frame = GlobalVariable.ContentFrame; // MP! dumb: kluge to get things working for now
-#endif
         }
 
         private void ExecuteItemInvokedCommand(MSWinUI.NavigationViewItemInvokedEventArgs args)
