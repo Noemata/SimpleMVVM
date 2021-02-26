@@ -1,4 +1,7 @@
-﻿using Windows.Networking.Connectivity;
+﻿#if !WINDOWS_UWP
+using Microsoft.UI.Xaml.Controls;
+#endif
+using Windows.Networking.Connectivity;
 
 namespace SimpleMVVM.Helpers
 {
@@ -13,5 +16,9 @@ namespace SimpleMVVM.Helpers
                 return internet;
             }
         }
+
+#if !WINDOWS_UWP
+        public static Frame ContentFrame { get; set; }
+#endif
     }
 }

@@ -14,6 +14,8 @@
   <ItemGroup>
     <Compile Include="..\..\SimpleMVVMuwp\Behaviors\EventToCommandBehavior.cs" Link="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="..\..\SimpleMVVMuwp\Converters\BoolToVisibilityConverter.cs" Link="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\Helpers\GlobalVariables.cs" Link="Helpers\GlobalVariables.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\ViewModels\ShellViewModel.cs" Link="ViewModels\ShellViewModel.cs" />
     <Compile Include="..\..\SimpleMVVMuwp\Views\AboutView.xaml.cs" Link="Views\AboutView.xaml.cs" />
     <Compile Include="..\..\SimpleMVVMuwp\Views\CredentialsListView.xaml.cs" Link="Views\CredentialsListView.xaml.cs" />
     <Compile Include="..\..\SimpleMVVMuwp\Views\HomeView.xaml.cs" Link="Views\HomeView.xaml.cs" />
@@ -59,5 +61,7 @@
   <ItemGroup>
     <Folder Include="Behaviors\" />
     <Folder Include="Converters\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>
