@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{BEC6D2
 		HomeView.png = HomeView.png
 		ListView.png = ListView.png
 		README.md = README.md
+		WinUI.png = WinUI.png
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.Services", "SimpleMVVM.Services\SimpleMVVM.Services.csproj", "{A0194240-A434-45CD-BC8D-45FAD08AF682}"
@@ -24,7 +25,7 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "SimpleMVVM (Package)", "Sim
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM", "SimpleMVVM\SimpleMVVM\SimpleMVVM.csproj", "{12579B90-6C7C-4391-850E-6EFC52129D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVVM.WinUI.Services", "SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj", "{C3344CA6-F04E-4429-8F91-E0987AF8CE44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMVVM.WinUI.Services", "SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj", "{C3344CA6-F04E-4429-8F91-E0987AF8CE44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

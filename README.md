@@ -16,6 +16,8 @@ Ancillary to the evaluation MVVM Toolkit usage, this project also attempts to sh
 
 ![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/ListView.png)
 
+![Screenshot](https://github.com/Noemata/SimpleMVVM/blob/master/WinUI.png)
+
 ## Notes
 
 What limitations?
