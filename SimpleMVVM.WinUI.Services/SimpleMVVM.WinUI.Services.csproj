@@ -7,7 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\SimpleMVVM.Uwp.Services\InDesignModeService.cs" Link="InDesignModeService.cs" />
+    <Compile Include="..\SimpleMVVM.Uwp.Services\NavigationService.cs" Link="NavigationService.cs" />
     <Compile Include="..\SimpleMVVM.Uwp.Services\SettingsService.cs" Link="SettingsService.cs" />
+    <Compile Include="..\SimpleMVVM.Uwp.Services\UserNotificationService.cs" Link="UserNotificationService.cs" />
   </ItemGroup>
 
   <ItemGroup>

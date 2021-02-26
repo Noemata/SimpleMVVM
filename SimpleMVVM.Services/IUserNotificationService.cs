@@ -9,11 +9,7 @@ namespace SimpleMVVM.Services
     public interface IUserNotificationService
     {
         object XamlRoot { get; set; }
-        Task ShowMessageAsync(string message, string title = null);
-        Task ShowErrorMessageAsync(string errorMessage, string title = null);
-        Task<bool> AskQuestion(string question, string title = null);
-        Task<bool> ShowOptions(string question, string firstOption, string secondOption, string title = null);
-        Task<object> ShowOptions(string question, List<Option> options, string title = null);
+
         Task MessageDialogAsync(string title, string message);
         Task MessageDialogAsync(string title, string message, string buttonText);
         Task<bool?> ConfirmationDialogAsync(string title);
