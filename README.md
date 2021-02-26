@@ -6,7 +6,7 @@ Description:
 
 This project incorporates features that compensate for some of the limitations of Microsoft's MVVM Toolkit. The demo app is simple enough to be digestable yet complicated enough to be representative of real world MVVM usage.
 
-Ancillary to the evaluation of MVVM Toolkit usage, this project also attempts to share code between WinUI 3 and UWP in a manner that minimizes the differences (WIP).  Code will be consolidated further as this is figured out.
+Ancillary to the evaluation of MVVM Toolkit usage, this project also attempts to share code between WinUI 3 and UWP in a manner that minimizes the differences.  Add an issue if you see ops for improvement on the consolidation.
 
 ## Credits
 * MVVM and Toolkit ideas: https://github.com/windows-toolkit/MVVM-Samples , https://github.com/XamlBrewer/UWP-MVVM-Toolkit-Sample , https://github.com/veler/PaZword
@@ -61,3 +61,13 @@ Navigation events and other like control events can be dispatched within the She
 
 Please let me know if you see ways to improve this sample or if you have a difference of opinion with the approach taken.
 
+Lastly, search for and uncomment the following lines in ShellViewModel.cs to enable the workaround for the WinUI XAML Behaviors bug:
+
+```
+#if !WINDOWS_UWP
+            //else
+            //    NavigationService.Frame = GlobalVariable.ContentFrame; // MP! dumb: kluge to get things working for now
+#endif
+```
+
+Other than things that do not work yet, the differences between WinUI and UWP are fairly minor.  You can leverage UWP to develop for WinUI today as demonstrated by SimpleMVVM.
