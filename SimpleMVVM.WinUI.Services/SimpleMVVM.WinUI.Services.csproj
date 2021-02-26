@@ -5,6 +5,9 @@
     <RootNamespace>SimpleMVVM.WinUI.Services</RootNamespace>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\SimpleMVVM.Uwp.Services\InDesignModeService.cs" Link="InDesignModeService.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Diagnostics" Version="7.0.0-preview5" />

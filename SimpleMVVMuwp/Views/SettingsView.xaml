@@ -3,11 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SimpleMVVM.Views"
-    xmlns:viewModels="using:SimpleMVVM.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  
     <Grid Background="#FF222222">
         <TextBlock Text="&#xe115;" FontFamily="Segoe MDL2 Assets" Margin="0,40,0,0" FontSize="300" Foreground="White" HorizontalAlignment="Center" />
         <TextBlock Text="{x:Bind ViewModel.Message, Mode=OneTime}" Margin="20" FontSize="44" HorizontalAlignment="Center" VerticalAlignment="Bottom" />

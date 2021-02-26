@@ -9,8 +9,6 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Views\HomeView.xaml" />
-    <None Remove="Views\SettingsView.xaml" />
     <None Remove="Views\ShellView.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -18,6 +16,8 @@
     <Compile Include="..\..\SimpleMVVMuwp\Converters\BoolToVisibilityConverter.cs" Link="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="..\..\SimpleMVVMuwp\Views\AboutView.xaml.cs" Link="Views\AboutView.xaml.cs" />
     <Compile Include="..\..\SimpleMVVMuwp\Views\CredentialsListView.xaml.cs" Link="Views\CredentialsListView.xaml.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\Views\HomeView.xaml.cs" Link="Views\HomeView.xaml.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\Views\SettingsView.xaml.cs" Link="Views\SettingsView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +35,12 @@
     <Page Include="..\..\SimpleMVVMuwp\Views\CredentialsListView.xaml" Link="Views\CredentialsListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="..\..\SimpleMVVMuwp\Views\HomeView.xaml" Link="Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="..\..\SimpleMVVMuwp\Views\SettingsView.xaml" Link="Views\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
@@ -42,18 +48,6 @@
     <ProjectReference Include="..\..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\SettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\HomeView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <ItemGroup>
