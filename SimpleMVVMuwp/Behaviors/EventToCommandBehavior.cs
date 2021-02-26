@@ -2,8 +2,11 @@
 using System.Reflection;
 using System.Windows.Input;
 using System.Globalization;
+#if WINDOWS_UWP
 using Windows.UI.Xaml;
-
+#else
+using Microsoft.UI.Xaml;
+#endif
 using Microsoft.Xaml.Interactivity;
 
 namespace SimpleMVVM.Behaviors

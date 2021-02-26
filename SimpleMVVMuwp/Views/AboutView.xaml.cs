@@ -1,7 +1,10 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿#if WINDOWS_UWP
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+#else
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
+#endif
 
 namespace SimpleMVVM.Views
 {
@@ -12,7 +15,7 @@ namespace SimpleMVVM.Views
     {
         public AboutView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         // MP! This shouldn't be here.  Put this in the XAML side?

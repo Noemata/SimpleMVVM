@@ -9,11 +9,15 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Views\AboutView.xaml" />
-    <None Remove="Views\CredentialsListView.xaml" />
     <None Remove="Views\HomeView.xaml" />
     <None Remove="Views\SettingsView.xaml" />
     <None Remove="Views\ShellView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\SimpleMVVMuwp\Behaviors\EventToCommandBehavior.cs" Link="Behaviors\EventToCommandBehavior.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\Converters\BoolToVisibilityConverter.cs" Link="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\Views\AboutView.xaml.cs" Link="Views\AboutView.xaml.cs" />
+    <Compile Include="..\..\SimpleMVVMuwp\Views\CredentialsListView.xaml.cs" Link="Views\CredentialsListView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,16 +29,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Include="..\..\SimpleMVVMuwp\Views\AboutView.xaml" Link="Views\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="..\..\SimpleMVVMuwp\Views\CredentialsListView.xaml" Link="Views\CredentialsListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\SimpleMVVM.Models\SimpleMVVM.Models.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.Services\SimpleMVVM.Services.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.ViewModels\SimpleMVVM.ViewModels.csproj" />
     <ProjectReference Include="..\..\SimpleMVVM.WinUI.Services\SimpleMVVM.WinUI.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\CredentialsListView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <ItemGroup>
@@ -50,14 +57,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\AboutView.xaml">
+    <Page Update="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\ShellView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Folder Include="Behaviors\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,11 @@
 ﻿using System;
+#if WINDOWS_UWP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
+#else
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Data;
+#endif
 
 namespace SimpleMVVM.Converters
 {

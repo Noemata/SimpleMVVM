@@ -1,9 +1,11 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿#if WINDOWS_UWP
+using Windows.UI.Xaml.Controls;
+#else
+using Microsoft.UI.Xaml.Controls;
+#endif
+
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
-
 using SimpleMVVM.ViewModels;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace SimpleMVVM.Views
 {
@@ -14,7 +16,7 @@ namespace SimpleMVVM.Views
     {
         public CredentialsListView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         internal CredentialsListViewModel ViewModel => Ioc.Default.GetService<CredentialsListViewModel>();
