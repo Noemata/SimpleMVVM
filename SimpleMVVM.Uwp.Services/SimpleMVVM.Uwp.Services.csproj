@@ -133,7 +133,7 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Uwp">
+    <PackageReference Include="Microsoft.Toolkit.Diagnostics">
       <Version>7.0.0-preview5</Version>
     </PackageReference>
   </ItemGroup>
