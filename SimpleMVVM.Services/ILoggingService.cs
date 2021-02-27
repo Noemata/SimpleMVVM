@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace SimpleMVVM.Services
+﻿namespace SimpleMVVM.Services
 {
     public interface ILoggingService
     {
