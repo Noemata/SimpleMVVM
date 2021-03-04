@@ -17,7 +17,7 @@ namespace SimpleMVVM.ViewModels
             set => SetProperty(ref _message, value);
         }
 
-        public IRelayCommand LoadedCommand { get; }
+        public IRelayCommand LoadedCommand => new RelayCommand(Loaded);
 
         // Interface resolution was intentionally not used here to show how services can be resolved through Ioc calls.
         public AboutViewModel()
@@ -29,8 +29,6 @@ namespace SimpleMVVM.ViewModels
 
             if (_design.InDesignMode())
                 return;
-
-            LoadedCommand = new RelayCommand(Loaded);
         }
 
         protected override void OnActivated()

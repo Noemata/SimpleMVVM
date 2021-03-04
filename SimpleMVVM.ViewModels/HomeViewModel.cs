@@ -19,13 +19,11 @@ namespace SimpleMVVM.ViewModels
             set => SetProperty(ref _message, value);
         }
 
-        public IAsyncRelayCommand GetBusyAsyncCommand { get; }
+        public IAsyncRelayCommand GetBusyAsyncCommand => new AsyncRelayCommand(GetBusyAsync);
 
         public HomeViewModel(IMessenger messenger)
         {
             _messenger = messenger;
-
-            GetBusyAsyncCommand = new AsyncRelayCommand(GetBusyAsync);
 
             Message = "Hello home.";
         }

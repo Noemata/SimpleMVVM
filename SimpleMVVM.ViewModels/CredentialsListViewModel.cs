@@ -17,7 +17,7 @@ namespace SimpleMVVM.ViewModels
         private readonly IMessenger _messenger;
         private readonly IUserNotificationService _userNotificationService;
 
-        public AsyncRelayCommand<Credential> DeleteCommand { get; }
+        public AsyncRelayCommand<Credential> DeleteCommand => new AsyncRelayCommand<Credential>(OnDelete, cred => cred is object);
 
         public ObservableCollection<Credential> CredentialsCollection { get; } = new ObservableCollection<Credential>();
 
@@ -30,8 +30,6 @@ namespace SimpleMVVM.ViewModels
             CredentialsCollection.Add(new Credential { Name = "Janet", Email = "janet@acme.com", Role = "Admin" });
             CredentialsCollection.Add(new Credential { Name = "Tom", Email = "tom@acme.com", Role = "User" });
             CredentialsCollection.Add(new Credential { Name = "Joe", Email = "joe@acme.com", Role = "Joker" });
-
-            DeleteCommand = new AsyncRelayCommand<Credential>(OnDelete, cred => cred is object);
         }
 
         private async Task OnDelete(Credential entry)
