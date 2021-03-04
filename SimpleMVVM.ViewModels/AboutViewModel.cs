@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.Input;
 using SimpleMVVM.Services;
 
 namespace SimpleMVVM.ViewModels
@@ -16,6 +17,8 @@ namespace SimpleMVVM.ViewModels
             set => SetProperty(ref _message, value);
         }
 
+        public IRelayCommand LoadedCommand { get; }
+
         // Interface resolution was intentionally not used here to show how services can be resolved through Ioc calls.
         public AboutViewModel()
         {
@@ -26,6 +29,8 @@ namespace SimpleMVVM.ViewModels
 
             if (_design.InDesignMode())
                 return;
+
+            LoadedCommand = new RelayCommand(Loaded);
         }
 
         protected override void OnActivated()
@@ -33,6 +38,11 @@ namespace SimpleMVVM.ViewModels
             base.OnActivated();
 
             Message = "Activate about.";
+        }
+
+        public void Loaded()
+        {
+            // Note: Loaded is fired after Activated.  There is no event to wire in for Activated other than triggering it from code behind.
         }
     }
 }
