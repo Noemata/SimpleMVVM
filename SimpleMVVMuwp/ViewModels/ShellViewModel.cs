@@ -1,7 +1,9 @@
 ﻿using System;
 #if WINDOWS_UWP
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 #else
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 #endif
 using Windows.ApplicationModel;
@@ -55,9 +57,6 @@ namespace SimpleMVVM.ViewModels
 
         public string AppVersion => App.AppVersion;
 
-        public IRelayCommand<Frame> FrameLoadedCommand { get; }
-        public IRelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs> ItemInvokedCommand { get; }
-
         // Ioc will resolve all these interfaces for us provided they have been configured in App.xaml.cs
         public ShellViewModel(ISettingsService settingsService, IMessenger messenger, IUserNotificationService userNotificationService)
         {
@@ -73,9 +72,6 @@ namespace SimpleMVVM.ViewModels
             _userNotificationService = userNotificationService;
 
             _showVersion = _settingsService.GetValue<bool>(SettingsKeys.ShowVersionInfo);
-
-            FrameLoadedCommand = new RelayCommand<Frame>(SetupNavigationService);
-            ItemInvokedCommand = new RelayCommand<MSWinUI.NavigationViewItemInvokedEventArgs>(ExecuteItemInvokedCommand);
 
             _messenger.Register<ShellStateMessage>(this, (r, m) =>
             {
@@ -95,18 +91,18 @@ namespace SimpleMVVM.ViewModels
             });
         }
 
-        private void SetupNavigationService(Frame frame)
+        public void FrameLoaded(object sender, RoutedEventArgs e)
         {
 #if !WINDOWS_UWP
             // MP! resolve: better way/place to initialize XamlRoot for ContentDialogs
             _userNotificationService.XamlRoot = App.m_window.Content.XamlRoot;
 #endif
 
-            if (frame != null)
-                NavigationService.Frame = frame;
+            if (sender != null)
+                NavigationService.Frame = sender as Frame;
         }
 
-        private void ExecuteItemInvokedCommand(MSWinUI.NavigationViewItemInvokedEventArgs args)
+        public void OnItemInvoked(object sender, MSWinUI.NavigationViewItemInvokedEventArgs args)
         {
             if (args != null)
             {

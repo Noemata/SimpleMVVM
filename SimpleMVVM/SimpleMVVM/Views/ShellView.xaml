@@ -2,12 +2,8 @@
     x:Class="SimpleMVVM.Views.ShellView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SimpleMVVM.Views"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:converters="using:SimpleMVVM.Converters"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
-    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:ui="using:SimpleMVVM.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -22,15 +18,8 @@
                               IsBackButtonVisible="Collapsed"
                               Background="Transparent"
                               PaneDisplayMode="LeftCompact"
-                              IsSettingsVisible="False">
-            <i:Interaction.Behaviors>
-                <!-- Note: PassArguments="false" causes sender to be passed to ViewModel (very handy) -->
-                <ui:EventToCommandBehavior 
-                            Event="ItemInvoked"
-                            Command="{x:Bind ViewModel.ItemInvokedCommand}" 
-                            PassArguments="true"/>
-            </i:Interaction.Behaviors>
-
+                              IsSettingsVisible="False"
+                              ItemInvoked="{x:Bind ViewModel.OnItemInvoked}">
             <winui:NavigationView.MenuItems>
 
                 <winui:NavigationViewItem Icon="Home" Content="Home" IsEnabled="{x:Bind bNot(ViewModel.IsSetting), Mode=OneWay}" />
@@ -45,16 +34,7 @@
 
             </winui:NavigationView.MenuItems>
 
-            <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="14 14" >
-                <i:Interaction.Behaviors>
-                    <ic:EventTriggerBehavior EventName="Loaded">
-                        <!--
-                        WinUI 3 Preview 4 fails on ElementName bindings
-                        <ic:InvokeCommandAction Command="{x:Bind ViewModel.FrameLoadedCommand}" CommandParameter="{Binding ElementName=ContentFrame}"/>
-                        -->
-                        <ic:InvokeCommandAction Command="{x:Bind ViewModel.FrameLoadedCommand}" CommandParameter="{x:Bind ContentFrame}"/>
-                    </ic:EventTriggerBehavior>
-                </i:Interaction.Behaviors>
+            <Frame x:Name="ContentFrame" x:FieldModifier="Public" Padding="14 14" Loaded="{x:Bind ViewModel.FrameLoaded}">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>
