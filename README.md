@@ -22,7 +22,7 @@ Ancillary to the evaluation of MVVM Toolkit usage, this project also attempts to
 
 What limitations?
 
-Prsently, when you create a new ViewModel, you have to remember to wire it into your Ioc.  Most MVVM frameworks have this limitation.
+Presently, when you create a new ViewModel, you have to remember to wire it into your Ioc.  Most MVVM frameworks have this limitation.
 
 A simple solution to this little detail is to use an attribute as shown below:
 
